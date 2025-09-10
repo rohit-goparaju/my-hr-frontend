@@ -1,0 +1,12 @@
+:global(.popOut){
+    animation: popOut 0.5s ease-out 2.5s both;
+}
+
+@keyframes popOut {
+    from{
+        scale: 0;
+    }
+    to{
+        scale: 1;
+    }
+}

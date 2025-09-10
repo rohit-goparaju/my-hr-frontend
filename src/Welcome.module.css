@@ -1,0 +1,40 @@
+.welcomeContainer{
+    font-size: 6vw;
+
+}
+
+.welcomeLine1{
+    animation: typing 1s ease-in both;
+    white-space: nowrap;
+    overflow: hidden;
+    /* border: 2px solid red; */
+}
+
+.welcomeLine2{
+    animation: typing 1s ease-in 0.7s both;
+    white-space: nowrap;
+    overflow: hidden;
+    /* border: 2px solid red; */
+}
+
+.welcomeLine3{
+    animation: typing 1s 1.4s both;
+    white-space: nowrap;
+    overflow: hidden;
+    /* border: 2px solid red; */
+}
+
+@keyframes typing{
+    from{
+        width: 0;
+    }
+    to{
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width: 575px){
+    .welcomeContainer{
+    font-size: 10vw;
+    }
+}

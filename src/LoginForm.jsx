@@ -1,6 +1,8 @@
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import myHRBackend from "./myHRBackend";
 import { useState } from "react";
+import { useUserContext } from "./App";
+import styles from './LoginForm.module.css'
 
 export default function LoginForm(){
 
@@ -8,6 +10,7 @@ export default function LoginForm(){
     const [badCredentials, setBadCredentials] = useState(false);
     const [errorMessage, setErrorMessage] = useState("");
     const [userDoesNotExist, setUserDoesNotExist] = useState(false);
+    const {user, setUser} = useUserContext();
 
     const navigate = useNavigate();
 
@@ -31,9 +34,10 @@ export default function LoginForm(){
             setBadCredentials(false);
             setUserDoesNotExist(false);
             localStorage.setItem("jwt", response.data.jwt);
-            localStorage.setItem("user", response.data.user);
+            localStorage.setItem("user", JSON.stringify(response.data.user));
+            setUser(response.data.user);
 
-            navigate("/findAllUsers",{replace:true});
+            navigate("/landing",{replace:true});
         }catch(error){
 
             const errorData = error.response?.data;    
@@ -59,19 +63,27 @@ export default function LoginForm(){
         event.preventDefault();
         login();
     }
-
-    return (
-        <form onSubmit={handleSubmit} className="d-flex flex-column shadow rounded border border-1 m-5 p-5"> 
-            <label className="form-label" >
-                username:
-                <input type="text" className="form-control" name="username" value={credentials.username||""} onChange={handleChange} required></input>
-            </label>
-            <label className="form-label">
-                password:
-                <input type="password" className="form-control" name="password" value={credentials.password||""} onChange={handleChange} required></input>
-            </label>
-            {(badCredentials || userDoesNotExist) && <span className="text-danger">{errorMessage}</span>}
-            <input className="btn btn-primary" type="submit" value="Login"></input>
-        </form>
-    );
+    
+    if(user !== null){
+        return (
+            <div className="display-5 text-primary fw-bold text-break">{user.role} | {user.username}</div>
+        );
+    }
+    else{
+        return (
+            <form onSubmit={handleSubmit} className={`d-flex flex-column shadow rounded border border-1 w-75 p-5`}> 
+                <label className="form-label" >
+                    username:
+                    <input type="text" className="form-control" name="username" value={credentials.username||""} onChange={handleChange} pattern="^([a-z]{1}[a-z0-9]{1,})(@myHR\.in)$" required></input>
+                </label>
+                <label className="form-label">
+                    password:
+                    <input type="password" className="form-control" name="password" value={credentials.password||""} onChange={handleChange} pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*@)(?=.*\d+)[a-zA-Z][a-zA-Z0-9@]{5,}$" required></input>
+                </label>
+                {(badCredentials || userDoesNotExist) && <span className="text-danger">{errorMessage}</span>}
+                <input className="btn btn-primary" type="submit" value="Login"></input>
+                <Link to="#">Forgot password?</Link>
+            </form>
+        );
+    }
 }
