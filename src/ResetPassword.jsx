@@ -3,7 +3,7 @@ import { matchPasswords } from "./myHRUtil";
 import myHRBackend from "./myHRBackend";
 import { useNavigate } from "react-router-dom";
 
-export default function ChangePassword(){
+export default function ResetPassword({username, securityAnswer}){
     const [passwords, setPasswords] = useState({});
     const [passwordMismatch, setPasswordMismatch] = useState(false);
     const [requestFailed, setRequestFailed] = useState(false);
@@ -16,10 +16,12 @@ export default function ChangePassword(){
         setPasswords((prev)=>({...prev, [name]: value}));
     }
 
-    const changePassword = async()=>{
+    const resetPassword = async()=>{
         try{
-            const response = await myHRBackend.put("/changePassword", {
-                newPassword : passwords.pwdOne
+            const response = await myHRBackend.put("/getSecurityQuestion/resetPassword", {
+                username : username,
+                password : passwords.pwdOne,
+                securityAnswer : securityAnswer
             });
 
             if(response.data === "SUCCESS"){
@@ -47,7 +49,7 @@ export default function ChangePassword(){
         event.preventDefault();
         if(matchPasswords(passwords.pwdOne, passwords.pwdTwo)){
             setPasswordMismatch(false); 
-            changePassword();
+            resetPassword();
         }
         else{
             setPasswordMismatch(true);
