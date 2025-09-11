@@ -7,7 +7,7 @@ export default function Login(){
             <div className="col-sm-6 d-flex align-items-center justify-content-center">
                 <Welcome></Welcome>
             </div>
-            <div className="popOut col-sm-6 d-flex align-items-center justify-content-center">
+            <div className={`popOutLogin col-sm-6 d-flex align-items-center justify-content-center`}>
                 <LoginForm></LoginForm>
             </div>
         </div>

@@ -1,8 +1,9 @@
 import { Link, useNavigate } from "react-router-dom";
 import myHRBackend from "./myHRBackend";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useUserContext } from "./App";
-import styles from './LoginForm.module.css'
+import styles from './LoginForm.module.css';
+import avtar from './assets/avtar.jpg';
 
 export default function LoginForm(){
 
@@ -11,6 +12,7 @@ export default function LoginForm(){
     const [errorMessage, setErrorMessage] = useState("");
     const [userDoesNotExist, setUserDoesNotExist] = useState(false);
     const {user, setUser} = useUserContext();
+    const [profilePicture, setProfilePicture] = useState(null);
 
     const navigate = useNavigate();
 
@@ -33,11 +35,16 @@ export default function LoginForm(){
             // console.log(JSON.stringify(response));
             setBadCredentials(false);
             setUserDoesNotExist(false);
-            localStorage.setItem("jwt", response.data.jwt);
-            localStorage.setItem("user", JSON.stringify(response.data.user));
-            setUser(response.data.user);
+            if(response.data.jwt !== "INVALID")
+            {
+                localStorage.setItem("jwt", response.data.jwt);
+                localStorage.setItem("user", JSON.stringify(response.data.user));
+                setUser(response.data.user);
+                // navigate("/landing",{replace:true});
+            }else{
+                navigate("/logout", {replace:true});
+            }
 
-            navigate("/landing",{replace:true});
         }catch(error){
 
             const errorData = error.response?.data;    
@@ -63,10 +70,36 @@ export default function LoginForm(){
         event.preventDefault();
         login();
     }
+
+    useEffect(()=>{
+        if(user){
+            myHRBackend.get(`/profilePicture/${user.username}`, {responseType : "blob"})
+            .then(
+                (res)=>setProfilePicture(URL.createObjectURL(res.data))
+            )
+            .catch(error=>console.error("Error: ",error));
+            
+        }else{
+            setProfilePicture(null);
+        }
+    },
+    [user]);
     
     if(user !== null){
         return (
-            <div className="display-5 text-primary fw-bold text-break">{user.role} | {user.username}</div>
+            <div className={`d-flex flex-column justify-content-center align-items-center gap-5`}>
+                <div className={`${styles.profilePictureContainer}`}>
+                {
+                    profilePicture && 
+                    <img src={profilePicture} className={`${styles.profilePicture} shadow rounded-circle`}  alt="profile picture" width="100%" height="100%"></img>
+                }
+                {
+                    !profilePicture && 
+                    <img src={avtar} className={`${styles.profilePicture} shadow rounded-circle`} alt="profile picture" width="100%" height="100%"></img>
+                }
+                </div>
+                <div className="display-6 text-primary fw-bold text-break">{user.role} | {user.username}</div>
+            </div>
         );
     }
     else{

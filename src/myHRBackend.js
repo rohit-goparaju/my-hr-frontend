@@ -3,10 +3,7 @@ import axios from 'axios';
 
 const myHRBackend = axios.create(
     {
-        baseURL: "http://localhost:8080/myHRBackend",
-        headers:{
-            "Content-Type" : "application/json"
-        }
+        baseURL: "http://localhost:8080/myHRBackend"
     }
 );
 
@@ -29,11 +26,11 @@ myHRBackend.interceptors.response.use(
 
         if(error.response?.status === 401){
             console.log("Unauthorized! Redirecting to login");
-            window.location = "http://localhost:5173/myHR/logout";
+            window.location.href = "http://localhost:5173/myHR/logout";
         }
         if(error.response?.status === 403){
             console.log("forbidden! Redirecting to login");
-            window.location = "http://localhost:5173/myHR/logout";
+            window.location.href = "http://localhost:5173/myHR/logout";
         }
 
         console.error(error);
