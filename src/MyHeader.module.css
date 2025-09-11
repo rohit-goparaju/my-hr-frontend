@@ -1,3 +1,7 @@
 :global(.specialElite){
     font-family: 'Special Elite', Courier, monospace;
 }
+
+.profilePicture{
+    object-fit: cover;
+}

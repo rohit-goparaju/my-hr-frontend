@@ -4,21 +4,21 @@
 }
 
 .welcomeLine1{
-    animation: typing 1s ease-in both;
+    animation: typing 0.5s ease-in both;
     white-space: nowrap;
     overflow: hidden;
     /* border: 2px solid red; */
 }
 
 .welcomeLine2{
-    animation: typing 1s ease-in 0.7s both;
+    animation: typing 0.5s ease-in 0.35s both;
     white-space: nowrap;
     overflow: hidden;
     /* border: 2px solid red; */
 }
 
 .welcomeLine3{
-    animation: typing 1s 1.4s both;
+    animation: typing 0.5s 0.7s both;
     white-space: nowrap;
     overflow: hidden;
     /* border: 2px solid red; */

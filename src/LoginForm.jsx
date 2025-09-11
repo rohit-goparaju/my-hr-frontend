@@ -80,7 +80,7 @@ export default function LoginForm(){
             .catch(error=>console.error("Error: ",error));
             
         }else{
-            setProfilePicture(null);
+            setProfilePicture(avtar);
         }
     },
     [user]);
@@ -98,13 +98,13 @@ export default function LoginForm(){
                     <img src={avtar} className={`${styles.profilePicture} shadow rounded-circle`} alt="profile picture" width="100%" height="100%"></img>
                 }
                 </div>
-                <div className="display-6 text-primary fw-bold text-break">{user.role} | {user.username}</div>
+                <div className="display-6 text-primary fw-bold text-break">{user.role}  |  {user.username}</div>
             </div>
         );
     }
     else{
         return (
-            <form onSubmit={handleSubmit} className={`d-flex flex-column shadow rounded border border-1 w-75 p-5`}> 
+            <form onSubmit={handleSubmit} className={`d-flex flex-column shadow rounded-4 border border-1 w-75 p-5`}> 
                 <label className="form-label" >
                     username:
                     <input type="text" className="form-control" name="username" value={credentials.username||""} onChange={handleChange} pattern="^([a-z]{1}[a-z0-9]{1,})(@myHR\.in)$" required></input>
@@ -115,7 +115,7 @@ export default function LoginForm(){
                 </label>
                 {(badCredentials || userDoesNotExist) && <span className="text-danger">{errorMessage}</span>}
                 <input className="btn btn-primary" type="submit" value="Login"></input>
-                <Link to="#">Forgot password?</Link>
+                <Link to="/forgotPassword">Forgot password?</Link>
             </form>
         );
     }

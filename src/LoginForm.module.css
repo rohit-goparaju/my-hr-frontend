@@ -1,5 +1,5 @@
 :global(.popOutLogin){
-    animation: popOut 0.5s ease-out 2.5s both;
+    animation: popOut 0.5s ease-out 1s both;
 }
 
 .profilePictureContainer{

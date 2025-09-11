@@ -9,6 +9,9 @@ import About from "./About";
 import Landing from "./Landing";
 import RequireAuthentication from "./RequireAuthentication";
 import Login from "./Login";
+import avtar from "./assets/avtar.jpg";
+import ChangePassword from "./ChangePassword";
+import ForgotPassword from "./ForgotPassword";
 
 const userContext = createContext();
 
@@ -19,7 +22,7 @@ export function useUserContext(){
 export default function App(){
 
   const [user, setUser] = useState(null);
-  const [profilePicture, setProfilePicture] = useState();
+  const [profilePicture, setProfilePicture] = useState(avtar);
 
   function updateUserFromLocalStorage(){
      const userString = localStorage.getItem("user");
@@ -48,7 +51,10 @@ export default function App(){
           <Route path="/landing" element={<RequireAuthentication><Landing></Landing></RequireAuthentication>}></Route>
           <Route path="/logout" element={<Logout></Logout>}></Route>
           <Route path="/about" element={<About></About>}></Route>
-          <Route path="/test" element={<Test></Test>}></Route>
+          <Route path="/changePassword" element={<RequireAuthentication><ChangePassword></ChangePassword></RequireAuthentication>}></Route>
+          <Route path="/forgotPassword" element={<ForgotPassword></ForgotPassword>}></Route>
+          {/* <Route path="/test" element={<Test></Test>}></Route> */}
+          <Route path="*" element={<Logout></Logout>}></Route>
         </Route>
       </Routes>
     </userContext.Provider>
