@@ -11,8 +11,8 @@ export default function LoginForm(){
     const [badCredentials, setBadCredentials] = useState(false);
     const [errorMessage, setErrorMessage] = useState("");
     const [userDoesNotExist, setUserDoesNotExist] = useState(false);
-    const {user, setUser} = useUserContext();
-    const [profilePicture, setProfilePicture] = useState(null);
+    const {user, setUser, profilePicture, setProfilePicture} = useUserContext();
+
 
     const navigate = useNavigate();
 

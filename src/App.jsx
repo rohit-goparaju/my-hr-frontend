@@ -19,6 +19,7 @@ export function useUserContext(){
 export default function App(){
 
   const [user, setUser] = useState(null);
+  const [profilePicture, setProfilePicture] = useState();
 
   function updateUserFromLocalStorage(){
      const userString = localStorage.getItem("user");
@@ -40,7 +41,7 @@ export default function App(){
   );
 
   return (
-    <userContext.Provider value={{user, setUser}}>
+    <userContext.Provider value={{user, setUser, profilePicture, setProfilePicture}}>
       <Routes>
         <Route path="/" element={<MyHRLayout></MyHRLayout>}>
           <Route index element={<Login></Login>}></Route>
