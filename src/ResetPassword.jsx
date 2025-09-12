@@ -61,11 +61,11 @@ export default function ResetPassword({username, securityAnswer}){
         <form onSubmit={handleSubmit} className={`d-flex flex-column shadow rounded-4 border border-dark border-1 w-50 p-5 m-5 gap-3`}>
             <label className="form-label">
                 Enter new password:
-                <input className="form-control" type="password" name="pwdOne" value={passwords.pwdOne||""} onChange={handleChange} pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*@)(?=.*\d+)[a-zA-Z][a-zA-Z0-9@]{5,}$" required></input>
+                <input className="form-control" type="password" name="pwdOne" value={passwords.pwdOne||""} onChange={handleChange} pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*@)(?=.*\d+)[a-zA-Z][a-zA-Z0-9@]{5,}$" title="should be atleast 6 characters long, should contain atleast 'one lower case, one upper case, one digit and one @'" required></input>
             </label>
             <label>
                 Confirm new password:
-                <input className="form-control" type="password" name="pwdTwo" value={passwords.pwdTwo||""} onChange={handleChange} pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*@)(?=.*\d+)[a-zA-Z][a-zA-Z0-9@]{5,}$" required></input>
+                <input className="form-control" type="password" name="pwdTwo" value={passwords.pwdTwo||""} onChange={handleChange} pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*@)(?=.*\d+)[a-zA-Z][a-zA-Z0-9@]{5,}$" title="should be atleast 6 characters long, should contain atleast 'one lower case, one upper case, one digit and one @'" required></input>
             </label>
             {passwordMismatch && <span className="text-danger">Passwords do not match.</span>}
             {requestFailed && <span className="text-danger">Request failed!! contact support.</span>}

@@ -104,15 +104,15 @@ export default function AddUser(){
             <h2>Add users: </h2>
                 <label className="form-label">
                     username:
-                    <input className="form-control" type="text" name="username" value={userFields.username||""} onChange={handleChange}  pattern="^([a-z]{1}[a-z0-9]{1,})(@myHR\.in)$" required></input>
+                    <input className="form-control" type="text" name="username" value={userFields.username||""} onChange={handleChange}  pattern="^([a-z]{1}[a-z0-9]{1,})(@myHR\.in)$" title="username must contain only lowercase alphabets, must start with an alphabet, can contain numbers and must end with @myHR.in" required></input>
                 </label>
                 <label className="form-label">
                     password:
-                    <input className="form-control" type="password" name="password" value={userFields.password||""} onChange={handleChange} pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*@)(?=.*\d+)[a-zA-Z][a-zA-Z0-9@]{5,}$" required></input>
+                    <input className="form-control" type="password" name="password" value={userFields.password||""} onChange={handleChange} pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*@)(?=.*\d+)[a-zA-Z][a-zA-Z0-9@]{5,}$" title="should be atleast 6 characters long, should contain atleast 'one lower case, one upper case, one digit and one @'" required></input>
                 </label>
                 <label className="form-label">
                     confirm password:
-                    <input className="form-control" type="password" name="confirmPwd" value={userFields.confirmPwd||""} onChange={handleChange} pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*@)(?=.*\d+)[a-zA-Z][a-zA-Z0-9@]{5,}$" required></input>
+                    <input className="form-control" type="password" name="confirmPwd" value={userFields.confirmPwd||""} onChange={handleChange} pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*@)(?=.*\d+)[a-zA-Z][a-zA-Z0-9@]{5,}$" title="should be atleast 6 characters long, should contain atleast 'one lower case, one upper case, one digit and one @'" required></input>
                 </label>
                 <label className="form-label">
                     Security question:

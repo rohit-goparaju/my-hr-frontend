@@ -109,11 +109,11 @@ export default function LoginForm(){
             <form onSubmit={handleSubmit} className={`d-flex flex-column shadow rounded-4 border border-1 w-75 p-5`}> 
                 <label className="form-label" >
                     username:
-                    <input type="text" className="form-control" name="username" value={credentials.username||""} onChange={handleChange} pattern="^([a-z]{1}[a-z0-9]{1,})(@myHR\.in)$" required></input>
+                    <input type="text" className="form-control" name="username" value={credentials.username||""} onChange={handleChange} pattern="^([a-z]{1}[a-z0-9]{1,})(@myHR\.in)$" title="username must contain only lowercase alphabets, must start with an alphabet, can contain numbers and must end with @myHR.in"   required></input>
                 </label>
                 <label className="form-label">
                     password:
-                    <input type="password" className="form-control" name="password" value={credentials.password||""} onChange={handleChange} pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*@)(?=.*\d+)[a-zA-Z][a-zA-Z0-9@]{5,}$" required></input>
+                    <input type="password" className="form-control" name="password" value={credentials.password||""} onChange={handleChange} pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*@)(?=.*\d+)[a-zA-Z][a-zA-Z0-9@]{5,}$" title="should be atleast 6 characters long, should contain atleast 'one lower case, one upper case, one digit and one @'" required></input>
                 </label>
                 {(badCredentials || userDoesNotExist) && <span className="text-danger">{errorMessage}</span>}
                 <input className="btn btn-primary" type="submit" value="Login"></input>

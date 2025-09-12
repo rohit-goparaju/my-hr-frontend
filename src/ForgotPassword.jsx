@@ -54,7 +54,7 @@ export default function ForgotPassword(){
                 <form onSubmit={handleSubmit} className={`d-flex flex-column shadow rounded-4 border border-dark border-1 w-50 p-5 m-5 gap-3`}>
                     <label className="form-label">
                         Enter username:
-                        <input className="form-control" type="text" name="username" value={username||""} onChange={handleChange} pattern="^([a-z]{1}[a-z0-9]{1,})(@myHR\.in)$" required></input>
+                        <input className="form-control" type="text" name="username" value={username||""} onChange={handleChange} pattern="^([a-z]{1}[a-z0-9]{1,})(@myHR\.in)$" title="username must contain only lowercase alphabets, must start with an alphabet, can contain numbers and must end with @myHR.in" required></input>
                     </label>   
                     {userNotFound && <span className="text-danger">User not found.</span>}
                     <input className="btn btn-primary" type="submit"></input>
