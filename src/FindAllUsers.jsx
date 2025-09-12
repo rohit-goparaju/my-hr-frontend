@@ -98,7 +98,7 @@ export default function FindAllUsers(){
                             {
                                (user.role !== "EMPLOYEE" &&  myHRUser.username !== user.username) &&
                                 <td className="d-flex gap-3">
-                                    <a href="#" onClick={(e)=>{navigate(`/editEmployeeDetails/${myHRUser.username}`, {replace:true})}}><i className="bi bi-pencil-square"></i></a>
+                                    <a href="#" onClick={(e)=>{navigate(`/editEmployeeDetails/${myHRUser.username}/${myHRUser.role}`, {replace:true})}}><i className="bi bi-pencil-square"></i></a>
                                     <a href="#" onClick={(e)=>{navigate(`/deleteEmployee/${myHRUser.username}`, {replace:true})}}><i className="bi bi-trash"></i></a>
                                 </td>
                             }
@@ -115,7 +115,7 @@ export default function FindAllUsers(){
 
             {/* pagination controls */}
             <div className="d-flex flex-column justify-content-center align-items-center mx-5">
-                <ul className="pagination">
+                <ul className="pagination d-flex flex-wrap">
                     <li key={"prev"} className="page-item"><a className={`page-link ${page === 0 ? "disabled" : ""}`} href="#" onClick={handlePrevious}>previous</a></li>
                     {
                         printPageNumbers()
@@ -123,6 +123,7 @@ export default function FindAllUsers(){
                     <li key={"next"} className="page-item"><a className={`page-link ${page===totalPages-1 ? "disabled" : ""}`} href="#" onClick={handleNext}>next</a></li>
                     <li key={"options"} className="page-item">
                         <select className="page-link" value={size} onChange={handleSize}>
+                            <option value={1}>1</option>
                             <option vlaue={2}>2</option>
                             <option value={5}>5</option>
                             <option value={10}>10</option>

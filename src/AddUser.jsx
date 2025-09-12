@@ -99,47 +99,50 @@ export default function AddUser(){
     }
 
     return (
-        <form onSubmit={handleSubmit} onReset={handleReset} className="d-flex flex-column shadow rounded border border-1 w-75 p-5 m-5 gap-1">
-            <label className="form-label">
-                username:
-                <input className="form-control" type="text" name="username" value={userFields.username||""} onChange={handleChange}  pattern="^([a-z]{1}[a-z0-9]{1,})(@myHR\.in)$" required></input>
-            </label>
-            <label className="form-label">
-                password:
-                <input className="form-control" type="password" name="password" value={userFields.password||""} onChange={handleChange} pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*@)(?=.*\d+)[a-zA-Z][a-zA-Z0-9@]{5,}$" required></input>
-            </label>
-            <label className="form-label">
-                confirm password:
-                <input className="form-control" type="password" name="confirmPwd" value={userFields.confirmPwd||""} onChange={handleChange} pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*@)(?=.*\d+)[a-zA-Z][a-zA-Z0-9@]{5,}$" required></input>
-            </label>
-            <label className="form-label">
-                Security question:
-                <input className="form-control" type="text" name="securityQuestion" value={userFields.securityQuestion||""} onChange={handleChange} required></input>
-            </label>
-            <label className="form-label">
-                Security answer:
-                <input className="form-control" type="text" name="securityAnswer" value={userFields.securityAnswer||""} onChange={handleChange} required></input>
-            </label>
-            <label className="form-label">
-                role:
-                <select className="form-select" name="role" value={userFields.role||"EMPLOYEE"} onChange={handleChange} required>
-                    <option value="EMPLOYEE">EMPLOYEE</option>
-                    <option value="HR">HR</option>
-                    {user.role === "ADMIN" && <option value="ADMIN">ADMIN</option>}
-                </select>
-            </label>
-            <label className="form-label">
-                profile picture:
-                <input ref={fileRef} className="form-control" type="file" name="profilePicture" onChange={handleChange} required></input>
-            </label>
-            {invalidImage && <span className="text-danger">Profile picture needs to be one of <b>JPG | JPEG | PNG</b>.</span>}
-            {passwordMismatch && <span className="text-danger">Passwords do not match.</span>}
-            {addStatus === "FAILED" && <span className="text-danger">Failed to add user, check if <b>{userFields.username}</b> already exists.</span>}
-            {addStatus === "SUCCESS" && <span className="text-success">Successfully added user <b>{userFields.username}.</b> </span>}
-            <div className="d-flex gap-3">
-                <input className="btn btn-primary flex-grow-1" type="submit" value="Add User"></input>
-                <input className="btn btn-primary flex-grow-1" type="reset"></input>
-            </div>
-        </form>
+        <div>
+            <form onSubmit={handleSubmit} onReset={handleReset} className="mx-auto d-flex flex-column shadow rounded border border-1 w-75 p-5 m-5 gap-1">
+            <h2>Add users: </h2>
+                <label className="form-label">
+                    username:
+                    <input className="form-control" type="text" name="username" value={userFields.username||""} onChange={handleChange}  pattern="^([a-z]{1}[a-z0-9]{1,})(@myHR\.in)$" required></input>
+                </label>
+                <label className="form-label">
+                    password:
+                    <input className="form-control" type="password" name="password" value={userFields.password||""} onChange={handleChange} pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*@)(?=.*\d+)[a-zA-Z][a-zA-Z0-9@]{5,}$" required></input>
+                </label>
+                <label className="form-label">
+                    confirm password:
+                    <input className="form-control" type="password" name="confirmPwd" value={userFields.confirmPwd||""} onChange={handleChange} pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*@)(?=.*\d+)[a-zA-Z][a-zA-Z0-9@]{5,}$" required></input>
+                </label>
+                <label className="form-label">
+                    Security question:
+                    <input className="form-control" type="text" name="securityQuestion" value={userFields.securityQuestion||""} onChange={handleChange} required></input>
+                </label>
+                <label className="form-label">
+                    Security answer:
+                    <input className="form-control" type="text" name="securityAnswer" value={userFields.securityAnswer||""} onChange={handleChange} required></input>
+                </label>
+                <label className="form-label">
+                    role:
+                    <select className="form-select" name="role" value={userFields.role||"EMPLOYEE"} onChange={handleChange} required>
+                        <option value="EMPLOYEE">EMPLOYEE</option>
+                        <option value="HR">HR</option>
+                        {user.role === "ADMIN" && <option value="ADMIN">ADMIN</option>}
+                    </select>
+                </label>
+                <label className="form-label">
+                    profile picture:
+                    <input ref={fileRef} className="form-control" type="file" name="profilePicture" onChange={handleChange} required></input>
+                </label>
+                {invalidImage && <span className="text-danger">Profile picture needs to be one of <b>JPG | JPEG | PNG</b>.</span>}
+                {passwordMismatch && <span className="text-danger">Passwords do not match.</span>}
+                {addStatus === "FAILED" && <span className="text-danger">Failed to add user, check if <b>{userFields.username}</b> already exists.</span>}
+                {addStatus === "SUCCESS" && <span className="text-success">Successfully added user <b>{userFields.username}.</b> </span>}
+                <div className="d-flex gap-3">
+                    <input className="btn btn-primary flex-grow-1" type="submit" value="Add User"></input>
+                    <input className="btn btn-primary flex-grow-1" type="reset"></input>
+                </div>
+            </form>
+        </div>
     );
 }

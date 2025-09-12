@@ -57,7 +57,7 @@ export default function App(){
           <Route path="/changePassword" element={<RequireAuthentication><ChangePassword></ChangePassword></RequireAuthentication>}></Route>
           <Route path="/forgotPassword" element={<ForgotPassword></ForgotPassword>}></Route>
           <Route path="/userProfile" element={<RequireAuthentication><UserProfile></UserProfile></RequireAuthentication>}></Route>
-          <Route path="/editEmployeeDetails/:username" element={<RequireAuthentication><ViewEmployeeDetails></ViewEmployeeDetails></RequireAuthentication>}></Route>
+          <Route path="/editEmployeeDetails/:username/:role" element={<RequireAuthentication><ViewEmployeeDetails></ViewEmployeeDetails></RequireAuthentication>}></Route>
           <Route path="/deleteEmployee/:username" element={<RequireAuthentication><DeleteEmployee></DeleteEmployee></RequireAuthentication>}></Route>
           {/* <Route path="/test" element={<Test></Test>}></Route> */}
           
