@@ -47,7 +47,10 @@ export default function ChangePassword(){
         event.preventDefault();
         if(matchPasswords(passwords.pwdOne, passwords.pwdTwo)){
             setPasswordMismatch(false); 
-            changePassword();
+            if(confirm("Confirm you want to change password?"))
+                changePassword();
+            else
+                setPasswords({});
         }
         else{
             setPasswordMismatch(true);

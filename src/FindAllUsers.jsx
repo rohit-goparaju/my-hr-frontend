@@ -42,7 +42,7 @@ export default function FindAllUsers(){
         <>
             <ul>
                 {users.map(
-                    (myHRUser, index, users)=><li key={myHRUser.username}>{myHRUser.username}</li>
+                    (myHRUser, index, users)=><li key={myHRUser.username}>{myHRUser.username}  |  <b>{myHRUser.role}</b></li>
                 )}
             </ul>
         </>

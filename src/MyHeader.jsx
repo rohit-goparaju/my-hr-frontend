@@ -57,6 +57,9 @@ export default function MyHeader(){
                             </NavLink>
                         <ul className="dropdown-menu">
                             <li>
+                                <Link className="dropdown-item" to="/userProfile">User Profile</Link>
+                            </li>
+                            <li>
                                 <Link className="dropdown-item" to="/changePassword">Change password</Link>
                             </li>
                             <li>

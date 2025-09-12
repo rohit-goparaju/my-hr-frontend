@@ -33,7 +33,7 @@ myHRBackend.interceptors.response.use(
             window.location.href = "http://localhost:5173/myHR/logout";
         }
 
-        console.error(error);
+        console.error("Error:",error);
         return Promise.reject(error);
     }
 )

@@ -8,7 +8,7 @@ export default function RequireAuthentication({children}){
 
     useEffect(
         ()=>{
-            if(!user){
+            if(!user && !localStorage.getItem("user") && !localStorage.getItem("jwt")){
                 navigate("/", {replace: true});
             }
         }

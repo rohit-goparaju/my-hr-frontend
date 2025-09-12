@@ -1,0 +1,24 @@
+.profilePictureContainer{
+    width: 20vw;
+    height: 20vw;
+}
+
+.profilePicture{
+    object-fit: cover;
+}
+
+@media only screen and (max-width: 575px){
+    .profilePictureContainer{
+    width: 40vw;
+    height: 40vw;
+    }
+
+}
+
+@media only screen and (min-width: 576px) and (max-width: 991px){
+    .profilePictureContainer{
+    /* border: 2px solid red; */
+    width: 30vw;
+    height: 30vw;
+    }
+}

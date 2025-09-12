@@ -12,6 +12,7 @@ import Login from "./Login";
 import avtar from "./assets/avtar.jpg";
 import ChangePassword from "./ChangePassword";
 import ForgotPassword from "./ForgotPassword";
+import UserProfile from "./UserProfile";
 
 const userContext = createContext();
 
@@ -53,7 +54,10 @@ export default function App(){
           <Route path="/about" element={<About></About>}></Route>
           <Route path="/changePassword" element={<RequireAuthentication><ChangePassword></ChangePassword></RequireAuthentication>}></Route>
           <Route path="/forgotPassword" element={<ForgotPassword></ForgotPassword>}></Route>
+          <Route path="/userProfile" element={<RequireAuthentication><UserProfile></UserProfile></RequireAuthentication>}></Route>
           {/* <Route path="/test" element={<Test></Test>}></Route> */}
+          
+          
           <Route path="*" element={<Logout></Logout>}></Route>
         </Route>
       </Routes>

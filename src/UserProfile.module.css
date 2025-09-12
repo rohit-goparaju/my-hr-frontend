@@ -1,0 +1,44 @@
+.userProfileContainer{
+    /* border: 2px solid red; */
+    width: 100%;
+    height: 100%;
+    display: grid; 
+    grid-template-areas: 
+    'profileCard content content content content content content content content'
+    'buttonsContainer content content content content content content content content'
+    'buttonsContainer content content content content content content content content'
+    'buttonsContainer content content content content content content content content'
+    'buttonsContainer content content content content content content content content'
+    'buttonsContainer content content content content content content content content'
+    'buttonsContainer content content content content content content content content';
+}
+
+
+.profileCardContainer{
+    /* border: 2px solid red; */
+    grid-area: profileCard;
+}
+
+
+.content{
+    /* border: 2px solid red; */
+    grid-area: content;
+    overflow: auto;
+}
+
+.buttonsContainer{
+    /* border: 2px solid red; */
+    grid-area: buttonsContainer;
+}
+
+@media only screen and (max-width: 575px) {
+    .userProfileContainer{
+        display: block;
+    }
+    .profileCardContainer{
+        margin-top: 2vh;
+    }
+    .buttonsContainer{
+        margin: 2vh 0;
+    }
+}

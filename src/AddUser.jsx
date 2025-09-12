@@ -56,6 +56,7 @@ export default function AddUser(){
                 );
                 if(response.data){
                     setAddStatus("SUCCESS");
+                    window.location.reload();
                     // console.log(response.data);
                 }else{
                     setAddStatus("FAILED");
@@ -78,13 +79,13 @@ export default function AddUser(){
     function handleChange(event){
         const {name,value, type, files} = event.target;
 
-        setUserFields((prev)=>({...prev, [name] : type==="file" ? files[0] : (typeof value === "string" ? value.trim() : value)}));
+        setUserFields((prev)=>({...prev, [name] : type==="file" ? files[0] : value}));
     }
 
     function handleSubmit(event){
         event.preventDefault();
         addUser();
-            console.log(userFields);
+            // console.log(userFields);
             // console.log(validateImageFileFormat(userFields.profilePicture));
             // console.log(matchPasswords(userFields.password, userFields.confirmPwd));
     }
