@@ -8,7 +8,7 @@ export default function About(){
                 </p>
             </div>
             <div>
-                <h1>Technologies used:</h1>
+                <h1>Technologies, frameworks and libraries used:</h1>
                 <ul>
                     <li>
                         Java
@@ -36,6 +36,15 @@ export default function About(){
                     </li>
                     <li>
                         Spring boot
+                    </li>
+                    <li>
+                        Spring data
+                    </li>
+                    <li>
+                        Spring security
+                    </li>
+                    <li>
+                        JWT
                     </li>
                     <li>
                         SQL
