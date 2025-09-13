@@ -53,6 +53,9 @@ export default function About(){
                         Node.js
                     </li>
                     <li>
+                        Maven
+                    </li>
+                    <li>
                         IDEs: Eclipse, VSCode
                     </li>
                 </ul>
