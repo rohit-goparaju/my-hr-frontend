@@ -49,6 +49,12 @@ export default function About(){
                     <li>
                         SQL
                     </li>
+                    <li>
+                        Node.js
+                    </li>
+                    <li>
+                        IDEs: Eclipse, VSCode
+                    </li>
                 </ul>
             </div>
             <div>    
