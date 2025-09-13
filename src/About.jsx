@@ -4,7 +4,7 @@ export default function About(){
             <div>
                 <h1>About page</h1>
                 <p>
-                    This is a java full stack project built by <b><i>Rohit Goparaju</i></b>.
+                    This is a java full stack HR project built by <b><i>Rohit Goparaju</i></b>.
                 </p>
             </div>
             <div>
